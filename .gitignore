@@ -1,2 +1,4 @@
 /projbackend/node_modules
 /projfrontend/node_modules
+/projfrontend/package-lock.json
+/projbackend/package-lock.json

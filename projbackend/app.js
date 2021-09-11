@@ -5,6 +5,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
+const path = require("path");
 const cors = require("cors");
 
 //My routes
@@ -27,9 +28,16 @@ mongoose
   });
 
 //Middlewares
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
+// app.use(cookieParser());
 app.use(cookieParser());
+//Body parsser, reading  data from body into req.body
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cors());
+
+// static files for production app
+app.use('/', express.static(path.join(__dirname, 'build')));
 
 //My Routes
 app.use("/api", authRoutes);
