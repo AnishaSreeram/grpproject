@@ -1,0 +1,21 @@
+{
+  "name": "grpproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "cd projbackend && npm run start",
+    "build": "cd projfrontend && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnishaSreeram/grpproject.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AnishaSreeram/grpproject/issues"
+  },
+  "homepage": "https://github.com/AnishaSreeram/grpproject#readme"
+}
