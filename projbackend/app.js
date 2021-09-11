@@ -28,12 +28,8 @@ mongoose
   });
 
 //Middlewares
-// app.use(bodyParser.json());
-// app.use(cookieParser());
+app.use(bodyParser.json());
 app.use(cookieParser());
-//Body parsser, reading  data from body into req.body
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 // static files for production app

@@ -8,8 +8,9 @@ var gateway = new braintree.BraintreeGateway({
 });
 
 exports.getToken = (req, res) => {
-  gateway.clientToken.generate({}, function(err, response) {
+  gateway.clientToken.generate({}, function (err, response) {
     if (err) {
+      console.log(err);
       res.status(500).send(err);
     } else {
       res.send(response);
@@ -30,10 +31,11 @@ exports.processPayment = (req, res) => {
         submitForSettlement: true
       }
     },
-    function(err, result) {
+    function (err, result) {
       if (err) {
         res.status(500).json(error);
       } else {
+        console.log(result);
         res.json(result);
       }
     }

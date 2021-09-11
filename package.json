@@ -18,5 +18,9 @@
   "bugs": {
     "url": "https://github.com/AnishaSreeram/grpproject/issues"
   },
-  "homepage": "https://github.com/AnishaSreeram/grpproject#readme"
+  "homepage": "https://github.com/AnishaSreeram/grpproject#readme",
+  "dependencies": {
+    "sweetalert2": "^11.1.5",
+    "sweetalert2-react-content": "^4.1.1"
+  }
 }

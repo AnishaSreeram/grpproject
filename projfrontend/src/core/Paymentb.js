@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { loadCart, cartEmpty } from "./helper/cartHelper";
 import { Link } from "react-router-dom";
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 import { getmeToken, processPayment } from "./helper/paymentbhelper";
 import { createOrder } from "./helper/orderHelper";
 import { isAuthenticated } from "../auth/helper";
 
 import DropIn from "braintree-web-drop-in-react";
 
+const MySwal = withReactContent(Swal);
 const Paymentb = ({ products, setReload = f => f, reload = undefined }) => {
   const [info, setInfo] = useState({
     loading: false,
@@ -68,11 +71,28 @@ const Paymentb = ({ products, setReload = f => f, reload = undefined }) => {
         .then(response => {
           setInfo({ ...info, success: response.success, loading: false });
           console.log("PAYMENT SUCCESS");
+          console.log(response);
+          createOrder(userId, token,
+            {
+              products: products,
+              transaction_id: response.transaction.id,
+              amount: parseFloat(response.transaction.amount),
+              address: response.transaction.creditCard.customerLocation,
+              updated: (new Date()).toISOString(),
+              user: userId
+            }).then(res => {
+              console.log(res);
+              MySwal.fire("Your order received!", "Thanks for ordering 😃", "success").then(() => {
+                localStorage.removeItem('cart');
+                window.location.reload();
+              });
+            }).catch(err => console.log(err));
           //TODO: empty the cart
           //TODO: force reload
         })
         .catch(error => {
           setInfo({ loading: false, success: false });
+          console.log(error)
           console.log("PAYMENT FAILED");
         });
     });
