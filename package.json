@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "cd projbackend && npm run start",
-    "build": "cd projfrontend && npm run build"
+    "build": "cd projfrontend && npm  i && npm run build",
+    "postbuild": "cd projbackend && npm  i"
   },
   "repository": {
     "type": "git",
