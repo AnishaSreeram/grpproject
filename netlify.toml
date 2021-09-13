@@ -1,0 +1,10 @@
+[[redirects]]
+  from = "/api/*"
+  to = "https://good-ecom.herokuapp.com/:splat"
+  status = 200
+  force = true
+# redirecting to index for spa
+[[redirects]]
+  from = "/*"
+  to = "/"
+  status = 200
